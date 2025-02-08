@@ -3,9 +3,12 @@ import numpy as np
 import pickle
 from sklearn.preprocessing import StandardScaler
 
-# Load trained model
-model = pickle.load(open('heart_disease_model.pkl', 'rb'))
-scaler = StandardScaler()
+import pickle
+
+# Load the trained model
+with open("heart_disease_model.pkl", "rb") as file:
+    model, scaler = pickle.load(file)
+
 
 def predict_heart_disease(age, sex, cp, trestbps, chol, fbs, thalach, exang):
     input_data = np.array([[age, sex, cp, trestbps, chol, fbs, thalach, exang]])
